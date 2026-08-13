@@ -1,0 +1,74 @@
+{
+  "name": "atolye-uzaktan-kontrol",
+  "displayName": "Atölye / Lab Uzaktan Kontrol Sistemi",
+  "description": "Hoca-öğrenci arası canlı kod izleme ve kontrol sistemi (özel/dahili kullanım için)",
+  "version": "1.0.0",
+  "publisher": "local-workshop",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "atolye.switchMode",
+        "title": "Atölye: Mod Değiştir (Şifre Gerekli)",
+        "category": "Atölye"
+      },
+      {
+        "command": "atolye.connect",
+        "title": "Atölye: Sunucuya Bağlan",
+        "category": "Atölye"
+      },
+      {
+        "command": "atolye.disconnect",
+        "title": "Atölye: Sunucu Bağlantısını Kes",
+        "category": "Atölye"
+      },
+      {
+        "command": "atolye.openTeacherPanel",
+        "title": "Atölye: Hoca Panelini Aç",
+        "category": "Atölye"
+      },
+      {
+        "command": "atolye.showStatus",
+        "title": "Atölye: Bağlantı Durumunu Göster",
+        "category": "Atölye"
+      }
+    ],
+    "configuration": {
+      "title": "Atölye Uzaktan Kontrol",
+      "properties": {
+        "atolye.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:3000",
+          "description": "Merkezi Socket.io sunucusunun adresi."
+        },
+        "atolye.modeSwitchPassword": {
+          "type": "string",
+          "default": "atolye123",
+          "description": "Öğrenci/Hoca modu arasında geçiş yapmak için gereken şifre."
+        },
+        "atolye.studentName": {
+          "type": "string",
+          "default": "",
+          "description": "Öğrenci modunda sunucuya bildirilecek görünen isim. Boşsa otomatik oluşturulur."
+        },
+        "atolye.autoConnect": {
+          "type": "boolean",
+          "default": true,
+          "description": "VS Code açıldığında sunucuya otomatik bağlan."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.5"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0"
+  }
+}
